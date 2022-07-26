@@ -1,0 +1,16 @@
+{% comment %}Looping through an array while referencing another array.{% endcomment %}
+
+{% capture data_1 %}location1|gamma|NY Home|Admin,location2|dogfood|Summer Beach Home|Guest{% endcapture %}
+{% capture data_2 %}18|6|4918|3492|235,12|3|4817|3492|535{% endcapture %}
+{% assign array_1 = data_1 | split: "," %}
+{% assign array_2 = data_2 | split: "," %}
+
+{% for item in array_1 %}
+    {% assign meta = item | split: "|" %}
+      <p>{{meta[0]}} is at {{i}}</p>
+       {% assign usage = array_2[forloop.index0] | split: "|" %}
+       <li>{{usage[0]}} blocked threats</li>
+       <li>{{usage[1]}} devices</li>
+       <li>{{usage[2]}} data up</li>
+       <li>{{usage[3]}} data down</li>
+{% endfor %}

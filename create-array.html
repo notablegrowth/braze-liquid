@@ -1,0 +1,14 @@
+{% comment %}You can create an array by splitting on a delimiter, in this case splitting on the comma. Once you've split you're able to loop through each value.
+
+This also shows an example of counting the number of results for a specific value in a loop {% endcomment %}
+
+{% assign array = "true,false,true" | split: "," %}
+{% assign count = 0 %}
+
+{% for item in array %}
+    {% if item == "true" %}
+        {% assign count = count | plus: 1 %}
+    {% endif %}
+{% endfor %}
+
+There are {{count}} true values

@@ -1,0 +1,21 @@
+{% comment %}Get a remote config file form flagsmith.com.{% endcomment %}
+
+{% connected_content
+    https://api.flagsmith.com/api/v1/flags/
+    :method get
+    :headers {
+      "x-environment-key": "ABC123XYZ"
+     }
+    :content_type application/json
+    :save payload
+%}
+
+{% for item in payload %}
+    {% case {{item['feature']['name']}} %}
+    {% when 'email_logo' %}
+        {% assign email_logo = {{item['feature_state_value']}} %}
+    {% when 'api_airtable' %}
+        {% assign api_airtable = {{item['feature_state_value']}} %}
+        {% capture api_airtable_bearer %}Bearer {{api_airtable}}{% endcapture %}
+    {% endcase %}
+{% endfor %}

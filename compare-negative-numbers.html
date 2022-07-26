@@ -1,0 +1,13 @@
+{% comment %}Casting a string as a number and then doing a comparison against another value.{% endcomment %}
+
+{% if {{2021_YoY_change}} contains '-' %}
+    {% assign is_negative = true %}
+    {% else %}
+    {% assign is_negative = false %}
+{% endif %}
+
+{% if {{ 2021_YoY_change | times: 1 }} >= 200 %}
+    {% abort_message('high_low_values')%}
+    {% elsif is_negative == true && {{2021_YoY_change | replace: '-', '' | times: 1 }} > 97 %}
+    {% abort_message('low_value')%}
+{% endif %}

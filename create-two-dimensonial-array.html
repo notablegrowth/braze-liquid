@@ -1,0 +1,11 @@
+{% comment %}This is less useful now that Braze supports objects and arrays of objects. However if you need to limit the number of data points and the string itself will always be less than 256 characters you can use this solution.{% endcomment %}
+
+{% capture data %}https://example.com/path/to-image-1.jpg;Product 1 Name;$99|https://example.com/path/to-image-2.jpg;Product 2 Name;$179{% endcapture %}
+{% assign array =  payload | split: "|" %}
+
+{% for item in array %}
+    {% assign product = item | split: ";" %}
+    {% assign image = product[0] %}
+    {% assign name = product[1] %}
+    {% assign price = product[2] %}
+{% endfor %}

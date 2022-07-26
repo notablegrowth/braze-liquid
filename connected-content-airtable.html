@@ -1,0 +1,14 @@
+{% comment %}Get results from a specific view in a table within an Airtable base.{% endcomment %}
+
+{% assign base = "appGqWQfIYRUabcxyz" %}
+{% assign table = "Products" | url_encode %}
+{% assign view = "On Sale" | url_encode %}
+{% results = 8 %}
+
+{% connected_content 
+    https://api.airtable.com/v0/{{base}}/{{table}}?maxRecords={{results}}&view={{view}}
+    :headers {
+    "Authorization": "Bearer ABC123XYZ"
+    }
+    :save payload
+%}
