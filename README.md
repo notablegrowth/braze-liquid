@@ -4,6 +4,8 @@ A collection of helpful Liquid code snippets compiled by Notable Growth. These s
 
 As Braze uses a forked version of Liquid, the code in these snippets may not work with other services that also use Liquid.
 
+Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutions-partners/notable-growth), we use data, creativity, and empathy in our strategic planning to connect meaningfully with our customers and deliver Notable results.
+
 ## Arrays
 - [Create Array](./create-array.html) - Create an array from a string. This also has an example of how to count values in a for loop.
 - [Create Two Dimensional Array](./create-two-dimensonial-array.html) - Create a two dimensional array.
@@ -26,4 +28,4 @@ As Braze uses a forked version of Liquid, the code in these snippets may not wor
 - [Case When](./case-when.html) - Switch statement based on the values of a variable. Useful for displaying copy based on the language of a user.
 
 ## Math
-- [Compare Negative Numbers](./compare-negative-numbers.html) - Compare negative numbers. This also has an example of casting a string as a number.
+- [Compare Negative Numbers](./compare-negative-numbers.html) - Simple example showing how to handle comparing a negative number in Liquid. This also has an example of casting a string as a number.

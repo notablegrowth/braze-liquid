@@ -3,7 +3,7 @@
 {% assign base = "appGqWQfIYRUabcxyz" %}
 {% assign table = "Products" | url_encode %}
 {% assign view = "On Sale" | url_encode %}
-{% results = 8 %}
+{% assign results = 8 %}
 
 {% connected_content 
     https://api.airtable.com/v0/{{base}}/{{table}}?maxRecords={{results}}&view={{view}}
