@@ -12,3 +12,8 @@
     }
     :save payload
 %}
+
+{% comment %}Return the all rows frm the column Name{% endcomment %}
+{% for item in payload['records'] %}
+  {{item.fields['Name']}}
+{% endfor %}
