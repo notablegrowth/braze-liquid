@@ -11,7 +11,7 @@
 {% endif %}
 
 {% connected_content
-https://www.transifex.com/api/2/project/{{ example-project }}/resource/{{ example-resource }}/translation/{{ userLanguage }}/strings?
+https://www.transifex.com/api/2/project/{{project}}/resource/{{resource}}/translation/{{userLanguage}}/strings?
 :basic_auth transifex :content_type application/json
 :save items %}
 

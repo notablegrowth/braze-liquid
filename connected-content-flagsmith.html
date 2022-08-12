@@ -7,10 +7,10 @@
       "x-environment-key": "ABC123XYZ"
      }
     :content_type application/json
-    :save payload
+    :save items
 %}
 
-{% for item in payload %}
+{% for item in items %}
     {% case {{item['feature']['name']}} %}
     {% when 'email_logo' %}
         {% assign email_logo = {{item['feature_state_value']}} %}

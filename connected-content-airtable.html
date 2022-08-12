@@ -7,13 +7,14 @@
 
 {% connected_content 
     https://api.airtable.com/v0/{{base}}/{{table}}?maxRecords={{results}}&view={{view}}
+    :method get
     :headers {
     "Authorization": "Bearer ABC123XYZ"
     }
-    :save payload
+    :save items
 %}
 
-{% comment %}Return the all rows frm the column Name{% endcomment %}
-{% for item in payload['records'] %}
+{% comment %}List values from the Name column{% endcomment %}
+{% for item in items['records'] %}
   {{item.fields['Name']}}
 {% endfor %}
