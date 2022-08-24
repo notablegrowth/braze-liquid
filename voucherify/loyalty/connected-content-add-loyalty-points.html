@@ -1,0 +1,35 @@
+{% comment %} 
+
+There are a couple of ways to trigger loyalty points. This approach gives the most flexibility to the marketing team.
+
+Your marketing team can create an earning rule that will reward a customer after the customer is associated with an event. You can send the event when the message is sent.
+
+Once the event is sent, depending on the definition of the earning rule, different customers can get a different number of points depending on their customer segment. 
+{% endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+
+{% capture postBody %}
+{ 
+    "event":"Event Name",
+    "customer": {
+        "source_id": "{{customer_id}}"
+    }
+}
+{% endcapture %}
+
+
+{% connected_content
+	{{api_endpoint}}/v1/events?c={{source_id}}
+	:method post
+	:headers {
+    "X-App-Id": "VOUCHERIFY-APP-ID",
+    "X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:body {{postBody}}
+	:content_type application/json
+	:cache_max_age
+	:retry
+%}

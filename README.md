@@ -18,6 +18,17 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 - [Connected Content Flagsmith](./connected-content-flagsmith.html) - Connected Content GET request to the [Flagsmith](https://docs.flagsmith.com/deployment/locally-api) API to get feature flags and remote config.
 - [Connected Content Transifex](./connected-content-transifex.html) - Connected Content GET request to v2.5 of the [Transifex](https://docs.transifex.com/api/introduction) API. This API will be deprecated 11/30/2022.
 
+### Voucherify Loyalty
+- [Publish a Voucherify incentive to a user in Braze](/voucherify/loyalty/connected-content-publish-promo-code.html)
+- [Retrieve selected incentive data](/voucherify/loyalty/connected-content-retrieve-data.html)
+- [Re-send the same incentive when close to expiration (a reminder)](/voucherify/loyalty/connected-content-resend-promo-code.html)
+- [Publish another promo code from the same campaign if the previous one was redeemed](/voucherify/loyalty/connected-content-republish-promo-code.html)
+- [List all unredeemed promo codes for a user in Braze](/voucherify/loyalty/connected-content-list-unredeemed.html)
+- [List available cart promotions](/voucherify/loyalty/connected-content-list-promotions.html)
+- [Add loyalty points triggered by Braze event](/voucherify/loyalty/connected-content-add-loyalty-points.html)
+- [Update gift card balance triggered by Braze event](/voucherify/loyalty/connected-content-update-card-balance.html)
+- [Create a promo code based on the customer’s custom attribute](/voucherify/loyalty/connected-content-create-custom-code-pattern.html)
+
 ## Dates
 - [Add Days](./add-days.html) - Add a specific amount of days to an existing date. Starting date must be converted to seconds first.
 - [Format Date](./format-date.html) - Format a date into ISO 8601.
