@@ -18,7 +18,7 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 - [Connected Content Flagsmith](./connected-content-flagsmith.html) - Connected Content GET request to the [Flagsmith](https://docs.flagsmith.com/deployment/locally-api) API to get feature flags and remote config.
 - [Connected Content Transifex](./connected-content-transifex.html) - Connected Content GET request to v2.5 of the [Transifex](https://docs.transifex.com/api/introduction) API. This API will be deprecated 11/30/2022.
 
-### Voucherify Loyalty
+### Voucherify Promotion Engine
 - [Publish a Voucherify incentive to a user in Braze](/voucherify/loyalty/connected-content-publish-promo-code.html)
 - [Retrieve selected incentive data](/voucherify/loyalty/connected-content-retrieve-data.html)
 - [Re-send the same incentive when close to expiration (a reminder)](/voucherify/loyalty/connected-content-resend-promo-code.html)
