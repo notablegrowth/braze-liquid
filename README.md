@@ -14,8 +14,8 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 ## Connected Content
 
 ### Data
-- [Connected Content Airtable](./data/connected-content-airtable.html) - Connected Content GET request to the [Airtable](https://airtable.com/api) API.
-- [Connected Content Flagsmith](./data/connected-content-flagsmith.html) - Connected Content GET request to the [Flagsmith](https://docs.flagsmith.com/deployment/locally-api) API to get feature flags and remote config.
+- [Airtable](./data/connected-content-airtable.html) - Connected Content GET request to the [Airtable](https://airtable.com/api) API.
+- [Flagsmith](./data/connected-content-flagsmith.html) - Connected Content GET request to the [Flagsmith](https://docs.flagsmith.com/deployment/locally-api) API to get feature flags and remote config.
 
 ### Voucherify Promotion Engine
 - [Publish a Voucherify incentive to a user in Braze](/voucherify/loyalty/connected-content-publish-promo-code.html)
@@ -29,12 +29,16 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 - [Create a promo code based on the customer’s custom attribute](/voucherify/loyalty/connected-content-create-custom-code-pattern.html)
 
 ### Localization
-- [Connected Content Transifex](./localization/connected-content-transifex.html) - Connected Content GET request to v2.5 of the [Transifex](https://docs.transifex.com/api/introduction) API. This API will be deprecated 11/30/2022.
+- [Transifex](./localization/connected-content-transifex.html) - Connected Content GET request to v2.5 of the [Transifex](https://docs.transifex.com/api/introduction) API. This API will be deprecated 11/30/2022.
 
 ### Misc
-- [Connected Content APOD](./misc/connected-content-nasa.html) - Connected Content GET request to [NASA's Astronomy Picture of the Day](https://api.nasa.gov/).
-- [Connected Content Get](./misc/connected-content-get.html)
-- [Connected Content Post](./misc/connected-content-post.html) - Connected Content POST request with custom header values.
+- [NASA](./misc/connected-content-nasa.html) - Connected Content GET request to [NASA's Astronomy Picture of the Day](https://api.nasa.gov/).
+- [Connected Content GET example](./misc/connected-content-get.html)
+- [Connected Content POST example](./misc/connected-content-post.html) - Connected Content POST request with custom header values.
+
+### Personalization
+- [Search for a gif on Giphy](./personalization/giphy-search.html) - Connected Content GET request to [Giphy's](https://developers.giphy.com/docs/api/) search endpoint.
+
 
 ## Dates
 - [Add Days](./add-days.html) - Add a specific amount of days to an existing date. Starting date must be converted to seconds first.
