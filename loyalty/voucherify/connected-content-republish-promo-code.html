@@ -1,0 +1,45 @@
+{% comment %}List all promo codes available to a selected Braze user. If there are no available codes or the latest was redeemed, then assign a new promo code from the same campaign.{% endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+{% assign voucherify_campaign_id = "{{voucherify_campaign_id}}" %}
+
+{% comment %}Retrieve the vouchers from the campaign assigned to a customer{% endcomment %}
+
+{% connected_content
+	{{api_endpoint}}/v1/vouchers?customer={{customer_id}}&campaign_id={{voucherify_campaign_id}}&c={{source_id}}
+	:method GET
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:save voucher_list
+	
+%} 
+
+{% comment %} Verify if the customer has a voucher from the campaign or if a voucher was already redeemed {% endcomment %}
+
+{% if (voucher_list.total) == 0 or (voucher_list.vouchers[0].redemption.redeemed_quantity) != 0%}
+{% connected_content
+	{{api_endpoint}}/v1/publications?c={{source_id}}
+	:method post
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+
+	:body campaign={{voucherify_campaign_id}}&customer={{customer_id}}&channel=Braze&source_id={{source_id}}
+	:content_type application/json
+	:save new_voucher
+	:cache_max_age
+	:retry
+%} 
+{% assign code = new_voucher.voucher.code}} %}
+{% else %}
+{% assign code = voucher_list.vouchers[0].code}} %}
+{% endif %}
+
+{% comment %}Place this snippet where you would like to display the promo code.{% endcomment %}
+
+Here is your code: {{code}}

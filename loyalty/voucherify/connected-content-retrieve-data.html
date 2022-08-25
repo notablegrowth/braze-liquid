@@ -1,0 +1,16 @@
+{% comment %}Retrieve information about a promo code/loyalty card code/gift card/referral code from Voucherify and pass it on to the user in Braze. Most common use cases include incentive expiration date, loyalty card/gift card balance, and the number of made referrals{% endcomment %}
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+
+{% connected_content
+	{{api_endpoint}}/v1/vouchers/{{custom_attribute.${incentive_name}}}?c={{source_id}}
+	:method GET
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:save information
+{% comment %}Place this snippet where you would like to display the incentive data.{% endcomment %}
+
+{{information.field.name}}

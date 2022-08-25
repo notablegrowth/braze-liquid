@@ -1,0 +1,27 @@
+{% comment %} Add additional credits to a gift card. The gift card code should be stored in the customer’s custom attributes in Braze.
+{% endcomment %}
+
+<BODY>
+{% assign campaign_id = {{campaign.${dispatch_id}}}_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+
+{% capture postBody %}
+{ 
+    "amount":1000
+}
+{% endcapture %}
+
+{% connected_content
+	{{api_endpoint}}/v1/vouchers/{{custom_attribute.${gift_card_from_attribute}}}/balance?c={{source_id}}
+	:method post
+
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:body {{postBody}}
+	:content_type application/json
+	:no_cache
+	:retry
+%}

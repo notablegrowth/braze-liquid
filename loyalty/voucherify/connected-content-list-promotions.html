@@ -1,0 +1,39 @@
+{% comment %}List all unused promotion tiers available to a selected Braze user.{% endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+
+{% capture postBody %}
+{
+    "customer": {
+        "source_id": "{{customer_id}}"
+    }
+}
+{% endcapture %}
+
+{% connected_content
+	{{api_endpoint}}/v1/promotions/validation?audienceRulesOnly=true&c={{source_id}}
+	:method post
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:body {{postBody}}
+	:content_type application/json
+	:cache_max_age
+	:save promotion_list
+	:retry
+%}
+
+
+{% if promotion_list.valid == true %}
+{% for promotion in promotion_list.promotions %}
+Promotion Name: {{promotion.name}}
+{% endfor %}
+{% else %}
+No promotions.
+{% endif %}
+
+
+{% comment %}To display the results properly, you need to build a table or an array view.{endcomment %}

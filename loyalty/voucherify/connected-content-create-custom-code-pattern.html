@@ -1,0 +1,37 @@
+{% comment %}Generate and publish a promo code with a custom prefix followed by a custom attribute, e.g., customer name, phone number, email address and more.{endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign phoneNumber = {{${phone_number}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+{% assign voucherify_campaign_id = "Voucherify’s Campaign ID" %}
+{% assign prefix = "Your-Prefix" %}
+
+{% connected_content
+	{{api_endpoint}}/v1/campaigns/{{voucherify_campaign_id}}/vouchers/{{prefix}}{{phoneNumber}}?c={{source_id}}
+	:method post
+	:headers {
+    	"X-App-Id": "APP ID",
+    	"X-App-Token": "APP_TOKEN"
+	}
+	
+	:content_type application/json
+	:cache_max_age 
+	:save voucher_created
+	:retry
+%} 
+
+{% connected_content
+	{{api_endpoint}}/v1/publications?c={{source_id}}
+	:method post
+	:headers {
+    	"X-App-Id": "APP ID",
+    	"X-App-Token": "APP_TOKEN"
+	}
+
+	:body voucher={{prefix}}{{phoneNumber}}&customer={{customer_id}}&channel=Braze&source_id={{source_id}}
+	:content_type application/json
+	:cache_max_age 
+	:save publication
+	:retry
+%}

@@ -1,0 +1,25 @@
+{% comment %}Retrieve a unique promo code/loyalty card code/gift card/referral code from Voucherify and assign it to a user in Braze.{% endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}}_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+{% assign voucherify_campaign_id = "Campaign_ID" %}
+
+{% connected_content
+	{{api_endpoint}}/v1/publications?c={{source_id}}
+	:method post
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID”,
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:body campaign={{voucherify_campaign_id}}&customer={{customer_id}}&channel=Braze&source_id={{source_id}}
+	:content_type application/json
+	:cache_max_age
+	:save incentive
+	:retry
+
+%}
+
+{% comment %}Place this snippet where you would like to display the incentive.{% endcomment %}
+
+{{incentive.field.name}}

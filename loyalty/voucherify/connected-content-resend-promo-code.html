@@ -1,0 +1,29 @@
+{% comment %} First, assign a promo code/gift card/referral code to a Braze user. Save the code and expiration date as custom attributes. Build a customer segment based on the expiration date and target the message at this segment. If the incentive was already redeemed, the message will be aborted. {% endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+
+{% connected_content
+	{{api_endpoint}}/vouchers/{{custom_attribute.${incentive_name}&c={{source_id}}
+	:method GET
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:save {{incentive}}
+
+{% comment %}Place this snippet where you would like to display the incentive.{% endcomment %}
+
+{% if incentive.__http_status_code__ != 200 %}
+  Voucher does not exist.
+  {% comment %}You can abort sending in this case{% endcomment %}
+{% endif %}
+
+{% if incentive.redemption.redeemed_quantity == 0 %}
+You can still use the voucher {{incentive.code}} up until {{incentive.expiration_date}}
+{% else %}
+
+Your voucher {{incentive.code}} has been used.
+
+{% endif %}

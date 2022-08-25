@@ -1,0 +1,25 @@
+{% comment %}List all unused promo codes available to a selected Braze user.{% endcomment %}
+
+{% assign campaign_id = {{campaign.${dispatch_id}}} %}
+{% assign customer_id = {{${user_id}}} %}
+{% assign source_id = campaign_id | append: customer_id %}
+{% assign voucherify_campaign_id = "{{voucherify_campaign_id}}" %}
+
+{% connected_content
+	{{api_endpoint}}/v1/vouchers?customer={{customer_id}}&c={{source_id}}
+	:method GET
+	:headers {
+    	"X-App-Id": "VOUCHERIFY-APP-ID",
+    	"X-App-Token": "VOUCHERIFY-APP-TOKEN"
+	}
+	:save voucher_list
+
+{% comment %}To display the results properly, you need to build a table or an array view.{endcomment %}
+
+{% for voucher in voucher_list.vouchers %}
+{% if voucher.redemption.redeemed_quantity != 0 %)
+Code: {{voucher.code}}
+
+{% endif %}
+
+{% endfor %}
