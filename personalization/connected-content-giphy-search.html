@@ -1,0 +1,17 @@
+{% comment %}Get search results from Giphy{% endcomment %}
+
+{% assign apiKey = "GIPHY-API-KEY" %}
+{% assign q = "Keyboard Cat" | url_encode %}
+{% comment %}Acceptable values include g, pg, pg-13, r. If you do not specify a rating, you will receive results from all possible ratings.{% endcomment %}
+{% assign rating = "g" %}
+{% assign lang = "en" %}
+{% assign limit = 1 %}
+
+{% connected_content 
+    https://api.giphy.com/v1/gifs/search?api_key={{apiKey}}&q={{q}}&limit={{limit}}&rating={{rating}}&lang={{lang}}
+    :method get
+    :save items
+%}
+
+{% comment %}Display first search result{% endcomment %}
+<img src="{{items.data[0].images.original.url}}">
