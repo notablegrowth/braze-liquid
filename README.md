@@ -44,6 +44,8 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 - [Add Days](/dates/add-days.html) - Add a specific amount of days to an existing date. Starting date must be converted to seconds first.
 - [Format Date](/dates/format-date.html) - Format a date into ISO 8601.
 - [Ordinal Date](/dates/ordinal-date.html) - Get the ordinal number for a date (e.g 5th, 22nd etc).
+- [Calculate Days Remaining](/dates/calculate-days-left-in-month) - Get the number of days remaining in the current month.
+
 
 ## Logic
 - [Abort](/logic/abort.html) - Abort a campaign based on the value of a variable.
@@ -51,3 +53,4 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 
 ## Math
 - [Compare Negative Numbers](/math/compare-negative-numbers.html) - Simple example showing how to handle comparing a negative number in Liquid. This also has an example of casting a string as a number.
+- [Random Number](/math/random-number.html) - Generate a random number.
