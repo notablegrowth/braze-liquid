@@ -18,15 +18,15 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 - [Flagsmith](/connected-content/data/connected-content-flagsmith.html) - Connected Content GET request to the [Flagsmith](https://docs.flagsmith.com/deployment/locally-api) API to get feature flags and remote config.
 
 ### Voucherify Promotion Engine
-- [Publish a Voucherify incentive to a user in Braze](/connected-content/voucherify/loyalty/connected-content-publish-promo-code.html)
-- [Retrieve selected incentive data](/connected-content/voucherify/loyalty/connected-content-retrieve-data.html)
-- [Re-send the same incentive when close to expiration (a reminder)](/connected-content/voucherify/loyalty/connected-content-resend-promo-code.html)
-- [Publish another promo code from the same campaign if the previous one was redeemed](/connected-content/voucherify/loyalty/connected-content-republish-promo-code.html)
-- [List all unredeemed promo codes for a user in Braze](/connected-content/voucherify/loyalty/connected-content-list-unredeemed.html)
-- [List available cart promotions](/connected-content/voucherify/loyalty/connected-content-list-promotions.html)
-- [Add loyalty points triggered by Braze event](/connected-content/voucherify/loyalty/connected-content-add-loyalty-points.html)
-- [Update gift card balance triggered by Braze event](/connected-content/voucherify/loyalty/connected-content-update-card-balance.html)
-- [Create a promo code based on the customer’s custom attribute](/connected-content/voucherify/loyalty/connected-content-create-custom-code-pattern.html)
+- [Publish a Voucherify incentive to a user in Braze](/connected-content/loyalty/voucherify/connected-content-publish-promo-code.html)
+- [Retrieve selected incentive data](/connected-content/loyalty/voucherify/connected-content-retrieve-data.html)
+- [Re-send the same incentive when close to expiration (a reminder)](/connected-content/loyalty/voucherify/connected-content-resend-promo-code.html)
+- [Publish another promo code from the same campaign if the previous one was redeemed](/connected-content/loyalty/voucherify/connected-content-republish-promo-code.html)
+- [List all unredeemed promo codes for a user in Braze](/connected-content/loyalty/voucherify/connected-content-list-unredeemed.html)
+- [List available cart promotions](/connected-content/vloyalty/voucherify/connected-content-list-promotions.html)
+- [Add loyalty points triggered by Braze event](/connected-content/loyalty/voucherify/connected-content-add-loyalty-points.html)
+- [Update gift card balance triggered by Braze event](/connected-content/loyalty/voucherify/connected-content-update-card-balance.html)
+- [Create a promo code based on the customer's custom attribute](/connected-content/loyalty/voucherify/connected-content-create-custom-code-pattern.html)
 
 ### Localization
 - [Transifex](/connected-content/localization/connected-content-transifex.html) - Connected Content GET request to v2.5 of the [Transifex](https://docs.transifex.com/api/introduction) API. This API will be deprecated 11/30/2022.
@@ -37,7 +37,7 @@ Notable Growth is a [Braze Alloy partner](https://www.braze.com/partners/solutio
 - [Connected Content POST example](/connected-content/misc/connected-content-post.html) - Connected Content POST request with custom header values.
 
 ### Personalization
-- [Search for a gif on Giphy](/connected-content/personalization/giphy-search.html) - Connected Content GET request to [Giphy's](https://developers.giphy.com/docs/api/) search endpoint.
+- [Search for a gif on Giphy](/connected-content/personalization/connected-content-giphy-search.html) - Connected Content GET request to [Giphy's](https://developers.giphy.com/docs/api/) search endpoint.
 
 
 ## Dates
