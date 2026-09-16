@@ -1,4 +1,6 @@
-{% comment %}Switch statement to display copy based on a specific language. The switch capture as it makes it easier to strip any extra space that might be captured.{% endcomment %}
+{% comment %}
+Switch statement to display copy based on a specific language. The switch is wrapped in a capture as it makes it easier to strip any extra space that might be captured.
+{% endcomment %}
 
 {% assign language = {{${language}}} %}
 {% capture copy %}
@@ -6,53 +8,53 @@
 
 {% when "es" %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plume se ha conectado a Internet
+Te has conectado a Internet
 {% else %}
 La red está desconectada
 {% endif %}
 
 {% when "fr" %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plume vient de se reconnecter à Internet
+Vous venez de vous reconnecter à Internet
 {% else %}
 Le réseau est hors ligne
 {% endif %}
 
 {% when "de" %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plume hat sich gerade wieder mit dem Internet verbunden
+Du bist wieder mit dem Internet verbunden
 {% else %}
 Netzwerk ist offline
 {% endif %}
-{% when "it" %}
 
+{% when "it" %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plume si è appena ricollegato ad internet
+Ti sei appena ricollegato a Internet
 {% else %}
 La rete è offline
 {% endif %}
 
 {% when "pt" %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plume si è appena ricollegato ad internet
+Você se reconectou à Internet
 {% else %}
-La rete è offline
+A rede está offline
 {% endif %}
 
 {% when "ja" %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plumeはインターネットに再接続しました
+インターネットに再接続しました
 {% else %}
-ネットワーク
+ネットワークがオフラインです
 {% endif %}
 
 {% else %}
 {% if {{api_trigger_properties.${type}}} == "networkOnline" %}
-Plume just re-connected to the Internet
+You just re-connected to the Internet
 {% else %}
 Network is Offline
 {% endif %}
 {% endcase %}
 {% endcapture %}
 
-{{copy}}
+{{ copy }}

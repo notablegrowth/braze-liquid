@@ -1,12 +1,14 @@
-{% comment %}Create oridinal numbers for dates.{% endcomment %}
+{% comment %}
+Create ordinal numbers for dates.
+{% endcomment %}
 
 {% capture day %}{{ current_date | date: "%-d" }}{% endcapture %}
-{% capture dayLastTwoDigits %}{{ day | modulo: 100 }}{% endcapture %}
-{% if dayLastTwoDigits >= "11" and dayLastTwoDigits <= "13" %}
+{% capture day_last_two_digits %}{{ day | modulo: 100 }}{% endcapture %}
+{% if day_last_two_digits >= "11" and day_last_two_digits <= "13" %}
     {% assign ordinal = "th" %}
 {% else %}
-    {% capture dayLastDigit %}{{ day | modulo: 10 }}{% endcapture %}
-    {% case dayLastDigit %}
+    {% capture day_last_digit %}{{ day | modulo: 10 }}{% endcapture %}
+    {% case day_last_digit %}
         {% when "1" %}
             {% assign ordinal = "st" %}
         {% when "2" %}
@@ -17,4 +19,4 @@
             {% assign ordinal = "th" %}
     {% endcase %}
 {% endif %}
-{% capture ordinalDay %}{{ day | append: ordinal }}{% endcapture %}
+{% capture ordinal_day %}{{ day | append: ordinal }}{% endcapture %}
