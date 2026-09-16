@@ -1,0 +1,15 @@
+{% comment %}
+Common string filters for cleaning up and formatting personalization text: capitalize, truncate, strip HTML tags, and find/replace. Note that Braze supports strip but not lstrip or rstrip.
+{% endcomment %}
+
+{{${first_name} | capitalize}}
+
+{{custom_attribute.${product_description} | truncate: 40}}
+
+{{custom_attribute.${rich_text_field} | strip_html}}
+
+{% comment %}Chain remove to strip formatting characters out of a value.{% endcomment %}
+{{${phone_number} | remove: "(" | remove: ")" | remove: " " | remove: "-"}}
+
+{% comment %}strip trims whitespace from both ends; the one-sided lstrip and rstrip are not supported.{% endcomment %}
+{{custom_attribute.${notes} | strip}}

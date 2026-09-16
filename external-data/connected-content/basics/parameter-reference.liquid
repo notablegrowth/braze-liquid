@@ -1,0 +1,19 @@
+{% comment %}
+Reference showing every commonly used connected_content parameter in one place. Remove the ones you don't need — most requests only use a handful of these. :headers, :basic_auth, and :auth_credentials are alternative ways to authenticate; you wouldn't normally use more than one at once.
+{% endcomment %}
+
+{% connected_content
+    https://example.com/api/resource
+    :method get
+    :headers {
+        "Authorization": "Bearer ABC123XYZ"
+    }
+    :basic_auth service_account
+    :body {"key": "value"}
+    :content_type application/json
+    :save response
+    :cache_max_age 3600
+    :retry
+%}
+
+{{ response }}
