@@ -1,30 +1,39 @@
 {% comment %}
-Get the number of days remaining in the current month.
+Get the number of days remaining in the current month. February accounts for leap years using the divisible-by-four rule, which is accurate through 2099.
 {% endcomment %}
 
 {% assign today = 'now' | date: '%d' %}
 {% assign current_month = 'now' | date: '%m' %}
+{% assign current_year = 'now' | date: '%Y' %}
+{% assign year_mod_4 = current_year | modulo: 4 %}
 
-{% if {{current_month}} == "1" %}
+{% assign february_days = 28 %}
+{% if year_mod_4 == 0 %}
+    {% assign february_days = 29 %}
+{% endif %}
+
+{% if {{current_month}} == "01" %}
     {% assign days_left = 31 | minus: today %}
-{% elsif {{current_month}} == "2" %}
-    {% assign days_left = 28 | minus: today %}
-{% elsif {{current_month}} == "3" %}
+{% elsif {{current_month}} == "02" %}
+    {% assign days_left = february_days | minus: today %}
+{% elsif {{current_month}} == "03" %}
     {% assign days_left = 31 | minus: today %}
-{% elsif {{current_month}} == "4" %}
+{% elsif {{current_month}} == "04" %}
     {% assign days_left = 30 | minus: today %}
-{% elsif {{current_month}} == "5" %}
+{% elsif {{current_month}} == "05" %}
     {% assign days_left = 31 | minus: today %}
-{% elsif {{current_month}} == "6" %}
+{% elsif {{current_month}} == "06" %}
     {% assign days_left = 30 | minus: today %}
-{% elsif {{current_month}} == "7" %}
+{% elsif {{current_month}} == "07" %}
     {% assign days_left = 31 | minus: today %}
-{% elsif {{current_month}} == "8" %}
+{% elsif {{current_month}} == "08" %}
     {% assign days_left = 31 | minus: today %}
-{% elsif {{current_month}} == "9" %}
+{% elsif {{current_month}} == "09" %}
+    {% assign days_left = 30 | minus: today %}
+{% elsif {{current_month}} == "10" %}
     {% assign days_left = 31 | minus: today %}
 {% elsif {{current_month}} == "11" %}
     {% assign days_left = 30 | minus: today %}
-{% else {{current_month}} == "12" %}
+{% else %}
     {% assign days_left = 31 | minus: today %}
 {% endif %}
