@@ -1,0 +1,11 @@
+{% comment %}
+Format numbers for display. Braze has native filters for this, so there's no need to hand-roll comma insertion: number_with_delimiter adds thousands separators, and money formats a value as an amount. Braze's money filter does not divide by 100 the way Shopify's does. Per Braze's docs, strip any existing commas and apply plus: 0 first so the filter receives a number.
+{% endcomment %}
+
+{{ 123456 | number_with_delimiter }}
+
+{% assign order_total = {{custom_attribute.${order_total}}} | remove: "," | plus: 0 %}
+{{ order_total | money }}
+
+{% comment %}Combine both to get a delimited money value, e.g. 1,234,567.89{% endcomment %}
+{{ order_total | money | number_with_delimiter }}

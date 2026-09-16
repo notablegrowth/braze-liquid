@@ -1,0 +1,14 @@
+{% comment %}
+Fall back to a default when an attribute is blank or missing, so personalization never renders an empty gap. first_name is a standard Braze attribute so it can be referenced bare; custom attributes always need the custom_attribute namespace.
+{% endcomment %}
+
+Hi {{${first_name} | default: 'there'}}, welcome back!
+
+{{custom_attribute.${loyalty_tier} | default: 'Member'}}
+
+{% comment %}For anything more involved than a swap, test the value explicitly. Braze treats an unset attribute as blank.{% endcomment %}
+{% if ${first_name} == blank %}
+    Welcome back!
+{% else %}
+    Welcome back, {{${first_name}}}!
+{% endif %}

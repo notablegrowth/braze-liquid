@@ -1,0 +1,12 @@
+{% comment %}
+Show a date or time in the user's local time zone using the time_zone filter. time_zone is a standard Braze attribute, so it can be referenced bare. The filter also accepts a literal zone name or a UTC offset.
+{% endcomment %}
+
+{% assign local_date_time = 'now' | time_zone: {{${time_zone}}} | date: '%B %e, %Y %I:%M %p' %}
+{{ local_date_time }}
+
+{% comment %}Apply it to a date stored in a custom attribute.{% endcomment %}
+{{custom_attribute.${appointment_date} | time_zone: {{${time_zone}}} | date: '%a, %b %e, %Y'}}
+
+{% comment %}Or pin the output to a specific zone regardless of where the user is.{% endcomment %}
+{{custom_attribute.${appointment_date} | time_zone: 'America/Chicago' | date: '%B %e %Y %z'}}

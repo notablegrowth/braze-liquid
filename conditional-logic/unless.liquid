@@ -1,0 +1,13 @@
+{% comment %}
+Unless is the inverse of if — the block only runs when the condition is false. Useful when the "false" case is the primary path you want to read first, such as aborting a send when a condition isn't met.
+{% endcomment %}
+
+{% unless {{custom_attribute.${has_active_subscription}}} %}
+    Renew your subscription to keep your benefits.
+{% endunless %}
+
+{% comment %}Commonly paired with abort_message to stop a send on the wrong day.{% endcomment %}
+{% assign current_day_name = 'now' | date: '%a' %}
+{% unless current_day_name == "Wed" %}
+    {% abort_message('Wrong day of the week') %}
+{% endunless %}

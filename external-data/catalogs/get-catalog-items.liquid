@@ -1,0 +1,20 @@
+{% comment %}
+Look up items from a Braze Catalog. catalog_items is not a block tag — there's no closing tag — and the catalog name and literal item IDs are unquoted. A variable used as an item ID must be wrapped in curly brackets. Results land in an items array, and you can request up to three IDs at once. Note that an ID that doesn't exist still returns an items array, just without an object in it.
+{% endcomment %}
+
+{% comment %}Look up a single item by a literal ID.{% endcomment %}
+{% catalog_items Games 1234 %}
+Get {{ items[0].title }} now for {{ items[0].price }}!
+
+{% comment %}Look up an item whose ID comes from a custom attribute.{% endcomment %}
+{% assign wishlist = {{custom_attribute.${wishlist}}} %}
+{% catalog_items Games {{ wishlist[0] }} %}
+{{ items[0].title }} - {{ items[0].price }}
+
+{% comment %}Request several items at once.{% endcomment %}
+{% catalog_items Games 1234 1235 1236 %}
+{{ items[0].title }}, {{ items[1].title }}, {{ items[2].title }}
+
+{% comment %}Use :rerender when the catalog field itself contains Liquid that needs evaluating.{% endcomment %}
+{% catalog_items Messages greet_msg :rerender %}
+{{ items[0].message }}
