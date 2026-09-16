@@ -1,10 +1,13 @@
-{% comment %}Get NASA's Astronomy Picture of the Day{% endcomment %}
-{% assign apiKey = "ABC123XYZ" %}
+{% comment %}
+Get NASA's Astronomy Picture of the Day.
+{% endcomment %}
 
-{% connected_content 
+{% assign api_key = "ABC123XYZ" %}
+
+{% connected_content
     :method get
-    https://api.nasa.gov/planetary/apod?api_key={{apiKey}}
+    https://api.nasa.gov/planetary/apod?api_key={{ api_key }}
     :save response
 %}
 
-<img src="{{response.url}}" alt="{{response.title}}">
+<img src="{{ response.url }}" alt="{{ response.title }}">

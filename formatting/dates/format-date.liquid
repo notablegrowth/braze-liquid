@@ -1,2 +1,5 @@
-{% comment %}ISO 8601 date and time format{% endcomment %}
-{{ appt | date: '%A, %B %d, %Y at %l:%M%p %Z'}}
+{% comment %}
+Format a date and time for display.
+{% endcomment %}
+
+{{ appt | date: '%A, %B %d, %Y at %l:%M%p %Z' }}

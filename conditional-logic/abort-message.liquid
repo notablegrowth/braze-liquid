@@ -1,7 +1,9 @@
-{% comment %}Abort a campaign given a specific value{% endcomment %}
+{% comment %}
+Abort a campaign given a specific value.
+{% endcomment %}
 
 {% if ${language} == "en" %}
     Send this message in English!
-    {% else %}
+{% else %}
     {% abort_message("User language not supported") %}
 {% endif %}

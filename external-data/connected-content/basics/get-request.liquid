@@ -1,9 +1,11 @@
-{% comment %}Example of a GET request with basic_auth.{% endcomment %}
+{% comment %}
+Example of a GET request with basic_auth.
+{% endcomment %}
 
-{% connected_content 
+{% connected_content
     https://www.example.com
     :method get
-   	:basic_auth service_account
+    :basic_auth service_account
     :content_type application/json
-    :save response 
+    :save response
 %}

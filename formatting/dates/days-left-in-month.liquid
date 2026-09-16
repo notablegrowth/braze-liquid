@@ -1,26 +1,30 @@
+{% comment %}
+Get the number of days remaining in the current month.
+{% endcomment %}
+
 {% assign today = 'now' | date: '%d' %}
-{% assign currentmonth = 'now' | date: '%m' %}
-                                          
-{% if {{currentmonth}} == "1" %}
- {% assign daysleft = 31 | minus: today %}
-{% elsif {{currentmonth}} == "2" %}
- {% assign daysleft = 28 | minus: today %}
-{% elsif {{currentmonth}} == "3" %}
- {% assign daysleft = 31 | minus: today %}
-{% elsif {{currentmonth}} == "4" %}
- {% assign daysleft = 30 | minus: today %}
-{% elsif {{currentmonth}} == "5" %}
- {% assign daysleft = 31 | minus: today %}
-{% elsif {{currentmonth}} == "6" %}
- {% assign daysleft = 30 | minus: today %}  
-{% elsif {{currentmonth}} == "7" %}
- {% assign daysleft = 31 | minus: today %}
-{% elsif {{currentmonth}} == "8" %}
- {% assign daysleft = 31 | minus: today %}
-{% elsif {{currentmonth}} == "9" %}
- {% assign daysleft = 31 | minus: today %}
-{% elsif {{currentmonth}} == "11" %}
- {% assign daysleft = 30 | minus: today %}
-{% else {{currentmonth}} == "12" %}
- {% assign daysleft = 31 | minus: today %}
- {% endif %}
+{% assign current_month = 'now' | date: '%m' %}
+
+{% if {{current_month}} == "1" %}
+    {% assign days_left = 31 | minus: today %}
+{% elsif {{current_month}} == "2" %}
+    {% assign days_left = 28 | minus: today %}
+{% elsif {{current_month}} == "3" %}
+    {% assign days_left = 31 | minus: today %}
+{% elsif {{current_month}} == "4" %}
+    {% assign days_left = 30 | minus: today %}
+{% elsif {{current_month}} == "5" %}
+    {% assign days_left = 31 | minus: today %}
+{% elsif {{current_month}} == "6" %}
+    {% assign days_left = 30 | minus: today %}
+{% elsif {{current_month}} == "7" %}
+    {% assign days_left = 31 | minus: today %}
+{% elsif {{current_month}} == "8" %}
+    {% assign days_left = 31 | minus: today %}
+{% elsif {{current_month}} == "9" %}
+    {% assign days_left = 31 | minus: today %}
+{% elsif {{current_month}} == "11" %}
+    {% assign days_left = 30 | minus: today %}
+{% else {{current_month}} == "12" %}
+    {% assign days_left = 31 | minus: today %}
+{% endif %}

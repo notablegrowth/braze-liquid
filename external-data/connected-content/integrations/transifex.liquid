@@ -1,32 +1,36 @@
-{% comment %}Example of getting translated strings from Transifex. This example uses v2.5 of Transifex's API which will be deprecated 11/30/2022.{% endcomment %}
+{% comment %}
+Example of getting translated strings from Transifex. This example uses v2.5 of Transifex's API which will be deprecated 11/30/2022.
+{% endcomment %}
 
 {% capture translation %}
 {% assign project = 'example-project' %}
 {% assign resource = 'example-resource' %}
 
 {% if {{ ${language} }} == blank %}
-    {% assign userLanguage = {{ ${language} }} %}
+    {% assign user_language = {{ ${language} }} %}
 {% else %}
-    {% assign userLanguage = 'en' %}
+    {% assign user_language = 'en' %}
 {% endif %}
 
 {% connected_content
-https://www.transifex.com/api/2/project/{{project}}/resource/{{resource}}/translation/{{userLanguage}}/strings?
-:basic_auth transifex :content_type application/json
-:save items %}
+    https://www.transifex.com/api/2/project/{{ project }}/resource/{{ resource }}/translation/{{ user_language }}/strings?
+    :basic_auth transifex
+    :content_type application/json
+    :save items
+%}
 
 {% for item in items %}
 {% case item.key %}
-{% when 'deviceBlocked.string' %}
-    {% capture deviceBlocked %}
+{% when 'blockedMessage.string' %}
+    {% capture blocked_message %}
     {% if item.translation != blank %}
     {{ item.translation }}
     {% else %}
     {{ item.source_string }}
     {% endif %}
     {% endcapture %}
-{% when 'deviceSuccess.string' %}
-    {% capture deviceSuccess %}
+{% when 'successMessage.string' %}
+    {% capture success_message %}
     {% if item.translation != blank %}
     {{ item.translation }}
     {% else %}
@@ -35,11 +39,10 @@ https://www.transifex.com/api/2/project/{{project}}/resource/{{resource}}/transl
     {% endcapture %}
 {% endcase %}
 {% endfor %}
-{% if deviceStatus == 'blocked' %}
-  {{ deviceBlocked | replace: '%%ipaddrr%%', ipaddrr | replace: '%%country%%', country | replace: '%%deviceName%%',
-deviceName }}
+{% if status == 'blocked' %}
+  {{ blocked_message | replace: '%%ip_address%%', ip_address | replace: '%%country%%', country | replace: '%%item_name%%', item_name }}
 {% else %}
-  {{ deviceSuccess }}
-{% endif }
+  {{ success_message }}
+{% endif %}
 {% endcapture %}
 {{ translation | strip }}

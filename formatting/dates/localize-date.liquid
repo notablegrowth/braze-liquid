@@ -1,3 +1,7 @@
+{% comment %}
+Render a date with localized day and month names. Liquid's date filter only outputs English, so the translated names are held in arrays and looked up by index. Each language also gets its own capture so the day/month order and any connecting words match local convention.
+{% endcomment %}
+
 {% assign english_days = "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday" | split: ", " %}
 {% assign spanish_days = "Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado" | split: ", " %}
 {% assign french_days = "Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi" | split: ", " %}
@@ -15,29 +19,29 @@
 {% assign english_day = date_object | date: "%A" %}
 
 {% for day in english_days %}
-{% if day == english_day %}
-{% assign day_index = forloop.index0 %}
+    {% if day == english_day %}
+        {% assign day_index = forloop.index0 %}
 
-{% comment %} use this variable assignment for testing {% endcomment %}
-{% assign language = 'pt' %}
+        {% comment %}Use this variable assignment for testing.{% endcomment %}
+        {% assign language = 'pt' %}
 
-{% case language %}
-  {% when 'es' %}
-    {% assign day = spanish_days[day_index] %}
-    {% assign month = spanish_months[month_index] %}
-    {% capture date_format %}{{spanish_days[day_index]}} {{string_date | date: "%d"}} de {{month}}{% endcapture %}
-  {% when 'fr' %}
-    {% assign day = french_days[day_index] %}
-    {% assign month = french_months[month_index] %}
-    {% capture date_format %}{{french_days[day_index]}} {{string_date | date: "%d"}} {{month}}{% endcapture %}
-  {% when 'pt' %}
-    {% assign day = portuguese_days[day_index] %}
-    {% assign month = portuguese_months[month_index] %}
-        {% capture date_format %}{{portuguese_days[day_index]}} {{string_date | date: "%d"}} de {{month}}{% endcapture %}
-  {% else %}
-    {% assign date_format = "now" | date: '%A, %B %d' %}
-{% endcase %}
-{% endif %}
+        {% case language %}
+            {% when 'es' %}
+                {% assign day = spanish_days[day_index] %}
+                {% assign month = spanish_months[month_index] %}
+                {% capture date_format %}{{ spanish_days[day_index] }} {{ string_date | date: "%d" }} de {{ month }}{% endcapture %}
+            {% when 'fr' %}
+                {% assign day = french_days[day_index] %}
+                {% assign month = french_months[month_index] %}
+                {% capture date_format %}{{ french_days[day_index] }} {{ string_date | date: "%d" }} {{ month }}{% endcapture %}
+            {% when 'pt' %}
+                {% assign day = portuguese_days[day_index] %}
+                {% assign month = portuguese_months[month_index] %}
+                {% capture date_format %}{{ portuguese_days[day_index] }} {{ string_date | date: "%d" }} de {{ month }}{% endcapture %}
+            {% else %}
+                {% assign date_format = "now" | date: '%A, %B %d' %}
+        {% endcase %}
+    {% endif %}
 {% endfor %}
 
-Date format: {{date_format}}
+Date format: {{ date_format }}

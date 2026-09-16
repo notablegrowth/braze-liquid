@@ -1,4 +1,6 @@
-{% comment %}Given a date in seconds add X number of days to it to determine what the date will be.{% endcomment %}
+{% comment %}
+Given a date in seconds add X number of days to it to determine what the date will be.
+{% endcomment %}
 
 {% assign date = "now" | date: "%s" %}
 {% assign days = 28 | times: 24 | times: 60 | times: 60 %}
